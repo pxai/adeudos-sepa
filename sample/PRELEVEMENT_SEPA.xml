@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.02">
+    <pain.001.001.02>
+        <GrpHdr>
+            <MsgId>MESS2013-1</MsgId>
+            <CreDtTm>2013-11-23T13:39:33</CreDtTm>
+            <NbOfTxs>4</NbOfTxs>
+            <CtrlSum>198,48</CtrlSum>
+            <Grpg>MIXD</Grpg>
+            <InitgPty>
+                <Nm>ETABL.PRELEVEUR</Nm>
+                <Id>
+                    <OrgId>
+                        <prtryid>
+                            <id>12345678901234</id>
+                        </prtryid>
+                    </OrgId>
+                </Id>
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf>
+            <PmtInfId>PRELEVEMENT JUIN 2013 PRELEVEUR</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+            </PmtTpInf>
+            <ReqdExctnDt>2013-06-10</ReqdExctnDt>
+            <Dbtr>
+                <Nm>NOM1 PRENOM1</Nm>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <IBAN>FR7616705111110412615326011</IBAN>
+                </Id>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BIC>CMCIFR2A</BIC>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <EndToEndId>Prelevement 20130310-3</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="EUR">37,08</InstdAmt>
+                </Amt>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BIC>CMCIFR2A</BIC>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>PRELEVEUR</Nm>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <IBAN>FR7610278000001116425534586</IBAN>
+                    </Id>
+                </CdtrAcct>
+                <RmtInf>
+                    <Ustrd>PRELEVE NOM1 2013 03</Ustrd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+        <PmtInf>
+            <PmtInfId>PRELEVEMENT JUIN 2013 PRELEVEUR</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+            </PmtTpInf>
+            <ReqdExctnDt>2013-06-10</ReqdExctnDt>
+            <Dbtr>
+                <Nm>NOM2 PRENOM2</Nm>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <IBAN>FR7630087222220007002490141</IBAN>
+                </Id>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BIC>CMCIFR2A</BIC>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <EndToEndId>Prelevement 20130310-3</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="EUR">57,30</InstdAmt>
+                </Amt>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BIC>CMCIFR2A</BIC>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>PRELEVEUR</Nm>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <IBAN>FR7610278000001116425534586</IBAN>
+                    </Id>
+                </CdtrAcct>
+                <RmtInf>
+                    <Ustrd>PRELEVE NOM2 2013 03</Ustrd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+        <PmtInf>
+            <PmtInfId>PRELEVEMENT JUIN 2013 PRELEVEUR</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+            </PmtTpInf>
+            <ReqdExctnDt>2013-06-10</ReqdExctnDt>
+            <Dbtr>
+                <Nm>NOM3 PRENOM3</Nm>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <IBAN>FR7630087333330007002490122</IBAN>
+                </Id>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BIC>CMCIFR2A</BIC>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <EndToEndId>Prelevement 20130310-3</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="EUR">57,30</InstdAmt>
+                </Amt>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BIC>CMCIFR2A</BIC>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>PRELEVEUR</Nm>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <IBAN>FR7610278000001116425534586</IBAN>
+                    </Id>
+                </CdtrAcct>
+                <RmtInf>
+                    <Ustrd>PRELEVE NOM3 2013 03</Ustrd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+        <PmtInf>
+            <PmtInfId>PRELEVEMENT JUIN 2013 PRELEVEUR</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+            </PmtTpInf>
+            <ReqdExctnDt>2013-06-10</ReqdExctnDt>
+            <Dbtr>
+                <Nm>NOM4 PRENOM4</Nm>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <IBAN>FR3520041444440290127B03029</IBAN>
+                </Id>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BIC>CMCIFR2A</BIC>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <EndToEndId>Prelevement 20130310-3</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="EUR">46,80</InstdAmt>
+                </Amt>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BIC>CMCIFR2A</BIC>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>PRELEVEUR</Nm>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <IBAN>FR7610278000001116425534586</IBAN>
+                    </Id>
+                </CdtrAcct>
+                <RmtInf>
+                    <Ustrd>PRELEVE NOM4 2013 03</Ustrd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+
+    </pain.001.001.02>
+</Document>
