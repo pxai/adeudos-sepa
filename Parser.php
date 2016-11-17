@@ -13,10 +13,17 @@ class Parser
     private $companyContact;
     private $totalRecords;
     private $totalAmount;
+    private $template;
 
     function __construct() {
         $this->totalRecords = 0;
         $this->totalAmount = 0;
+        $this->init();
+    }
+
+
+    private function init () {
+        $this->template = file_get_contents('template/SEPA_SAMPLE_TEMPLATE.xml');
     }
 
     /**
@@ -35,7 +42,7 @@ class Parser
     private function payment () {
         $result = "";
 
-
+        $result .= $this->template;
         $result .= "<br />\n";
         return $result;
     }
