@@ -1,4 +1,5 @@
 <?php
+include_once 'Replace.php';
 
 /**
  * Created by PhpStorm.
@@ -32,10 +33,7 @@ class Parser
     private function header () {
         $result = "";
 
-        $result .= "<CstmrDrctDbtInitn>\n";
-        $result .= "<GrpHdr>";
-
-        $result .= "</GrpHdr>";
+        $result .= $HEADER;
         return $result;
     }
 
@@ -53,7 +51,7 @@ class Parser
     private function footer () {
         $result = "";
 
-        $result .= "</CstmrDrctDbtInitn>";
+        $result .= $FOOTER;
         $result .= "\n";
         return $result;
     }
@@ -69,11 +67,11 @@ class Parser
         $result = $this->header();
 
         foreach ($lines as $line) {
-            $result .= $line . "<br />\n";
+            $result .= $CUSTOMER . "<br />\n";
         }
 
         $result .= $this->footer();
-
+        echo $CUSTOMER;
         return $result;
     }
 

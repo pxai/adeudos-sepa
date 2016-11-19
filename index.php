@@ -44,7 +44,7 @@
 
         include_once 'Parser.php';
         $parser = new Parser();
-        //print_r($lines);
+        print_r($lines);
 
         echo $parser->process($lines);
 

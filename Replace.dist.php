@@ -1,8 +1,11 @@
+<?php
+
+$HEADER =<<<EOT
 <?xml version="1.0" encoding="utf-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance";>
 <CstmrDrctDbtInitn>
 <GrpHdr>
-    <MsgId>REFERENCIA_DEL_CLIENTE</MsgId><!--F31229545-->
+    <MsgId>REFERENCIA_DEL_CLIENTE</MsgId>
     <CreDtTm>FECHA_Y_HORA</CreDtTm>
     <NbOfTxs>NUMERO_TOTAL_ADEUDOS</NbOfTxs>
     <CtrlSum>CANTIDAD_TOTAL</CtrlSum>
@@ -13,7 +16,7 @@
                 <Othr>
                     <Id>IDENTIFICADOR_PRESENTADOR</Id>
                     <SchmeNm>
-                        <Cd>CORE</Cd>
+                            <Cd>CORE</Cd>
                     </SchmeNm>
                 </Othr>
             </OrgId>
@@ -60,6 +63,9 @@
         </FinInstnId>
     </CdtrAgt>
     <ChrgBr>SLEV</ChrgBr>
+EOT;
+
+$CUSTOMER=<<<EOT
     <DrctDbtTxInf>
         <PmtId>
             <InstrId> CONCEPTO</InstrId>
@@ -108,54 +114,38 @@
             <Ustrd>CONCEPTO</Ustrd>
         </RmtInf>
     </DrctDbtTxInf>
-    <DrctDbtTxInf>
-        <PmtId>
-            <InstrId> 20130930Fra.508901</InstrId>
-            <EndToEndId> 20130930Fra.508901</EndToEndId>
-        </PmtId>
-        <InstdAmt Ccy="EUR">17.34</InstdAmt>
-        <DrctDbtTx>
-            <MndtRltdInf>
-                <MndtId>4350025048</MndtId>
-                <DtOfSgntr>2009-10-31</DtOfSgntr>
-                <AmdmntInd>false</AmdmntInd>
-            </MndtRltdInf>
-            <CdtrSchmeId>
-                <Id>
-                    <PrvtId>
-                        <Othr>
-                            <Id>ES46J03118115</Id>
-                            <SchmeNm>
-                                <Prtry>SEPA</Prtry>
-                            </SchmeNm>
-                        </Othr>
-                    </PrvtId>
-                </Id>
-            </CdtrSchmeId>
-        </DrctDbtTx>
-        <DbtrAgt>
-            <FinInstnId>
-                <BIC>BSABESBB</BIC>
-            </FinInstnId>
-        </DbtrAgt>
-        <Dbtr>
-            <Nm>CLIENTE 2, S.L.</Nm>
-            <Id>
-                <OrgId>
-                    <BICOrBEI>BSABESBB</BICOrBEI>
-                </OrgId>
-            </Id>
-        </Dbtr>
-        <DbtrAcct>
-            <Id>
-                <IBAN>ES55008103221100010XXXX</IBAN>
-            </Id>
-            <Ccy>EUR</Ccy>
-        </DbtrAcct>
-        <RmtInf>
-            <Ustrd>Fra. 13 01            5.089</Ustrd>
-        </RmtInf>
-    </DrctDbtTxInf>
-</PmtInf>
-</CstmrDrctDbtInitn>
-</Document>
+EOT;
+
+$FOOTER =<<<EOT
+        </PmtInf>
+    </CstmrDrctDbtInitn>
+ </Document>
+EOT;
+
+$HEADER_VALUES = array(
+    'REFERENCIA_DEL_CLIENTE' => '',
+    'FECHA_Y_HORA' => date('d-m-Y'),
+    'NUMERO_TOTAL_ADEUDOS' => 0,
+    'CANTIDAD_TOTAL' => 0,
+    'NOMBRE_DEL_PRESENTADOR' => '',
+    'IDENTIFICADOR_DEL_PRESENTADOR' => '',
+    'REFERENCIA_DE_REMESA' => '',
+    'NUMERO_TOTAL_ADEUDOS' => 0,
+    'CANTIDAD_TOTAL' => 0,
+    'FECHA_DE_COBRO_SIN_HORA' => date('d-m-Y'),
+    'NOMBRE_DEL_PRESENTADOR'  => '', // TITULAR
+    'IDENTIFICADOR_PRESENTADOR'  => '', // IDENTIFICADOR
+    'IBAN_PRESENTADOR' => '', // IBAN
+    'BIC_BANCO' => ''
+);
+
+$CUSTOMER_VALUES = array(
+    'CONCEPTO' => '',
+    'CANTIDAD' => '',
+    'ID_MANDATO' => '',
+    'FECHA_MANDATO' => date('d-m-Y'),
+    'IDENTIFICADOR_PRESENTADOR' => '',
+    'BIC_BANCO_DEUDOR' => '',
+    'NOMBRE_CLIENTE' => '',
+    'CONCEPTO' => ''
+);
