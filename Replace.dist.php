@@ -1,11 +1,15 @@
 <?php
 
-$HEADER =<<<EOT
+class Replace {
+
+
+    public  $FOO = "OK it works";
+    public  $HEADER =<<<EOT
 <?xml version="1.0" encoding="utf-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance";>
 <CstmrDrctDbtInitn>
 <GrpHdr>
-    <MsgId>REFERENCIA_DEL_CLIENTE</MsgId>
+    <MsgId>REFERENCIA_DEL_CLIENTE</MsgId><!--F31229545-->
     <CreDtTm>FECHA_Y_HORA</CreDtTm>
     <NbOfTxs>NUMERO_TOTAL_ADEUDOS</NbOfTxs>
     <CtrlSum>CANTIDAD_TOTAL</CtrlSum>
@@ -65,7 +69,7 @@ $HEADER =<<<EOT
     <ChrgBr>SLEV</ChrgBr>
 EOT;
 
-$CUSTOMER=<<<EOT
+    public $CUSTOMER=<<<EOT
     <DrctDbtTxInf>
         <PmtId>
             <InstrId> CONCEPTO</InstrId>
@@ -116,36 +120,45 @@ $CUSTOMER=<<<EOT
     </DrctDbtTxInf>
 EOT;
 
-$FOOTER =<<<EOT
+    public  $FOOTER =<<<EOT
         </PmtInf>
     </CstmrDrctDbtInitn>
  </Document>
 EOT;
 
-$HEADER_VALUES = array(
-    'REFERENCIA_DEL_CLIENTE' => '',
-    'FECHA_Y_HORA' => date('d-m-Y'),
-    'NUMERO_TOTAL_ADEUDOS' => 0,
-    'CANTIDAD_TOTAL' => 0,
-    'NOMBRE_DEL_PRESENTADOR' => '',
-    'IDENTIFICADOR_DEL_PRESENTADOR' => '',
-    'REFERENCIA_DE_REMESA' => '',
-    'NUMERO_TOTAL_ADEUDOS' => 0,
-    'CANTIDAD_TOTAL' => 0,
-    'FECHA_DE_COBRO_SIN_HORA' => date('d-m-Y'),
-    'NOMBRE_DEL_PRESENTADOR'  => '', // TITULAR
-    'IDENTIFICADOR_PRESENTADOR'  => '', // IDENTIFICADOR
-    'IBAN_PRESENTADOR' => '', // IBAN
-    'BIC_BANCO' => ''
-);
+    public  $HEADER_VALUES;
 
-$CUSTOMER_VALUES = array(
-    'CONCEPTO' => '',
-    'CANTIDAD' => '',
-    'ID_MANDATO' => '',
-    'FECHA_MANDATO' => date('d-m-Y'),
-    'IDENTIFICADOR_PRESENTADOR' => '',
-    'BIC_BANCO_DEUDOR' => '',
-    'NOMBRE_CLIENTE' => '',
-    'CONCEPTO' => ''
-);
+    public $CUSTOMER_VALUES;
+
+    function __construct() {
+        $this->HEADER_VALUES = array(
+            'REFERENCIA_DEL_CLIENTE' => '',
+            'FECHA_Y_HORA' => date('d-m-Y'),
+            'NUMERO_TOTAL_ADEUDOS' => 0,
+            'CANTIDAD_TOTAL' => 0,
+            'NOMBRE_DEL_PRESENTADOR' => '',
+            'IDENTIFICADOR_DEL_PRESENTADOR' => '',
+            'REFERENCIA_DE_REMESA' => '',
+            'NUMERO_TOTAL_ADEUDOS' => 0,
+            'CANTIDAD_TOTAL' => 0,
+            'FECHA_DE_COBRO_SIN_HORA' => date('d-m-Y'),
+            'NOMBRE_DEL_PRESENTADOR'  => '', // TITULAR
+            'IDENTIFICADOR_PRESENTADOR'  => '', // IDENTIFICADOR
+            'IBAN_PRESENTADOR' => '', // IBAN
+            'BIC_BANCO' => ''
+        );
+        $this->CUSTOMER_VALUES = array(
+            'CONCEPTO' => '',
+            'CANTIDAD' => '',
+            'ID_MANDATO' => '',
+            'FECHA_MANDATO' => date('d-m-Y'),
+            'IDENTIFICADOR_PRESENTADOR' => '',
+            'BIC_BANCO_DEUDOR' => '',
+            'NOMBRE_CLIENTE' => '',
+            'CONCEPTO' => '',
+            'IBAN_CLIENTE' => ''
+        );
+    }
+
+
+}

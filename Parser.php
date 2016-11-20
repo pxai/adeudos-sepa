@@ -15,16 +15,16 @@ class Parser
     private $totalRecords;
     private $totalAmount;
     private $template;
+    private $replace;
 
     function __construct() {
         $this->totalRecords = 0;
         $this->totalAmount = 0;
-        $this->init();
+        $this->replace = new Replace();
     }
 
 
     private function init () {
-        $this->template = file_get_contents('template/SEPA_SAMPLE_TEMPLATE.xml');
     }
 
     /**
@@ -32,16 +32,7 @@ class Parser
      */
     private function header () {
         $result = "";
-
-        $result .= $HEADER;
-        return $result;
-    }
-
-    private function payment () {
-        $result = "";
-
-        $result .= $this->template;
-        $result .= "<br />\n";
+        $result .= str_replace(array_keys($this->replace->HEADER_VALUES),array_values($this->replace->HEADER_VALUES),$this->replace->HEADER);
         return $result;
     }
 
@@ -51,7 +42,7 @@ class Parser
     private function footer () {
         $result = "";
 
-        $result .= $FOOTER;
+        $result .= $this->replace->FOOTER;
         $result .= "\n";
         return $result;
     }
@@ -67,11 +58,25 @@ class Parser
         $result = $this->header();
 
         foreach ($lines as $line) {
-            $result .= $CUSTOMER . "<br />\n";
+            $v = preg_split("/;/",$line);
+            $CURRENT_CUSTOMER_VALUES = array(
+                'CONCEPTO' => 'AAA',
+                'CANTIDAD' => $v[5],
+                'ID_MANDATO' => 'CCCC',
+                'FECHA_MANDATO' => date('d-m-Y'),
+                'IDENTIFICADOR_PRESENTADOR' => 'DDD',
+                'BIC_BANCO_DEUDOR' => 'EEE',
+                'NOMBRE_CLIENTE' => $v[0]." ".$v[1],
+                'CONCEPTO' => $v[6],
+                'IBAN_CLIENTE' => $v[4]
+            );
+          //  $result .= preg_replace(array_keys(Replace::$CUSTOMER_VALUES),array_values($CUSTOMER_VALUES),Replace::$CUSTOMER);
+            $result .= str_replace(array_keys($this->replace->CUSTOMER_VALUES),array_values($CURRENT_CUSTOMER_VALUES),$this->replace->CUSTOMER);
+            $result .= "\n";
         }
 
         $result .= $this->footer();
-        echo $CUSTOMER;
+        $result .= "\n";
         return $result;
     }
 
