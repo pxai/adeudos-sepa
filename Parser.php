@@ -32,6 +32,8 @@ class Parser
      */
     private function header () {
         $result = "";
+        $this->replace->HEADER_VALUES['NUMERO_TOTAL_ADEUDOS'] = $this->totalRecords;
+        $this->replace->HEADER_VALUES['CANTIDAD_TOTAL'] = $this->totalAmount;
         $result .= str_replace(array_keys($this->replace->HEADER_VALUES),array_values($this->replace->HEADER_VALUES),$this->replace->HEADER);
         return $result;
     }
@@ -55,7 +57,11 @@ class Parser
     public function process ($lines) {
         $result = "";
 
-        $result = $this->header();
+
+        $this->totalAmount = 0;
+        $this->totalRecords = 0;
+
+        $customerPart = '';
 
         foreach ($lines as $line) {
             $v = preg_split("/;/",$line);
@@ -71,10 +77,14 @@ class Parser
                 'IBAN_CLIENTE' => $v[4]
             );
           //  $result .= preg_replace(array_keys(Replace::$CUSTOMER_VALUES),array_values($CUSTOMER_VALUES),Replace::$CUSTOMER);
-            $result .= str_replace(array_keys($this->replace->CUSTOMER_VALUES),array_values($CURRENT_CUSTOMER_VALUES),$this->replace->CUSTOMER);
-            $result .= "\n";
+            $customerPart .= str_replace(array_keys($this->replace->CUSTOMER_VALUES),array_values($CURRENT_CUSTOMER_VALUES),$this->replace->CUSTOMER);
+            $customerPart .= "\n";
+            $this->totalRecords++;
+            $this->totalAmount += $v[5];
         }
 
+        $result = $this->header();
+        $result .= $customerPart;
         $result .= $this->footer();
         $result .= "\n";
         return $result;
