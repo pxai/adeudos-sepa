@@ -36,7 +36,7 @@
         }
         //echo "OK <a href='/?".$cifrador->encrypt('ap_actualizar_alumnos&ac=salvareduca')."' > APLICAR CAMBIOS </a>";
         echo "<hr />Salida del programa <br /><br /><span style='font-size: smaller'>";
-        echo "Formato de CSV esperado: nombre;apellido1;apellido2;dni;cuenta;cantidad;concepto";
+        echo "Formato de CSV esperado: nombre;cuenta;concepto;cantidad";
 
         $newfile = $_FILES[$fileid]['tmp_name'];
 

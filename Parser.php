@@ -61,27 +61,27 @@ class Parser
         $this->totalAmount = 0;
         $this->totalRecords = 0;
 
-        $customerPart = '';
+        $customerPart = '\n';
 
         foreach ($lines as $line) {
             $v = preg_split("/;/",$line);
             $CURRENT_CUSTOMER_VALUES = array(
                 'CONCEPTO' => 'AAA',
-                'CANTIDAD' => $v[5],
-                'ID_MANDATO' => 'CCCC',
+                'CANTIDAD' => $v[3],
+                'ID_MANDATO' => ($this->totalRecords+1),
                 'FECHA_MANDATO' => date('Y-m-d'),
                 'IDENTIFICADOR_PRESENTADOR' => 'DDD',
                 'IDENTIFICADOR_CLIENTE_FECHA' => date('Ymdhhmmss').'-'.($this->totalRecords + 1),
                 'BIC_BANCO_DEUDOR' => 'EEE',
-                'NOMBRE_CLIENTE' => $v[0]." ".$v[1],
-                'CONCEPTO' => $v[6],
-                'IBAN_CLIENTE' => $v[4]
+                'NOMBRE_CLIENTE' => $v[0],
+                'CONCEPTO' => $v[2],
+                'IBAN_CLIENTE' => $v[1]
             );
           //  $result .= preg_replace(array_keys(Replace::$CUSTOMER_VALUES),array_values($CUSTOMER_VALUES),Replace::$CUSTOMER);
             $customerPart .= str_replace(array_keys($this->replace->CUSTOMER_VALUES),array_values($CURRENT_CUSTOMER_VALUES),$this->replace->CUSTOMER);
             $customerPart .= "\n";
             $this->totalRecords++;
-            $this->totalAmount += $v[5];
+            $this->totalAmount += $v[3];
         }
 
         $result = $this->header();
