@@ -71,7 +71,7 @@ class Parser
                 'ID_MANDATO' => ($this->totalRecords+1),
                 'FECHA_MANDATO' => date('Y-m-d'),
                 'IDENTIFICADOR_PRESENTADOR' => 'DDD',
-                'IDENTIFICADOR_CLIENTE_FECHA' => date('Ymdhhmmss').'-'.($this->totalRecords + 1),
+                'IDENTIFICADOR_CLIENTE_FECHA' => date('Ymdhhmmss').'-'.sprintf("%'.04d", $this->totalRecords + 1),
                 'BIC_BANCO_DEUDOR' => 'EEE',
                 'NOMBRE_CLIENTE' => $v[0],
                 'CONCEPTO' => $v[2],
