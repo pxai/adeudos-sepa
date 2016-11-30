@@ -33,7 +33,7 @@ class Parser
     private function header () {
         $result = "";
         $this->replace->HEADER_VALUES['NUMERO_TOTAL_ADEUDOS'] = $this->totalRecords;
-        $this->replace->HEADER_VALUES['CANTIDAD_TOTAL'] = $this->totalAmount;
+        $this->replace->HEADER_VALUES['CANTIDAD_TOTAL'] = sprintf("%1.2f",$this->totalAmount);
         $result .= str_replace(array_keys($this->replace->HEADER_VALUES),array_values($this->replace->HEADER_VALUES),$this->replace->HEADER);
         return $result;
     }
@@ -45,7 +45,7 @@ class Parser
         $result = "";
 
         $result .= $this->replace->FOOTER;
-        $result .= "\n";
+
         return $result;
     }
 
@@ -61,13 +61,13 @@ class Parser
         $this->totalAmount = 0;
         $this->totalRecords = 0;
 
-        $customerPart = '\n';
+        $customerPart = '';
 
         foreach ($lines as $line) {
             $v = preg_split("/;/",$line);
             $CURRENT_CUSTOMER_VALUES = array(
                 'CONCEPTO' => 'AAA',
-                'CANTIDAD' => $v[3],
+                'CANTIDAD' => rtrim($v[3]),   // It is the last data, remove trailing newline, space, or whatsoever
                 'ID_MANDATO' => ($this->totalRecords+1),
                 'FECHA_MANDATO' => date('Y-m-d'),
                 'IDENTIFICADOR_PRESENTADOR' => 'DDD',
@@ -87,7 +87,6 @@ class Parser
         $result = $this->header();
         $result .= $customerPart;
         $result .= $this->footer();
-        $result .= "\n";
         return $result;
     }
 
