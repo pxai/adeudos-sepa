@@ -1,0 +1,32 @@
+<DrctDbtTxInf>
+    <PmtId>
+        <InstrId>IDENTIFICADOR_CLIENTE_FECHA</InstrId>
+        <EndToEndId>ID_MANDATO</EndToEndId>
+    </PmtId>
+    <InstdAmt Ccy="EUR">CANTIDAD</InstdAmt>
+    <DrctDbtTx>
+        <MndtRltdInf>
+            <MndtId>ID_MANDATO</MndtId>
+            <DtOfSgntr>FECHA_MANDATO</DtOfSgntr>
+            <AmdmntInd>false</AmdmntInd>
+        </MndtRltdInf>
+    </DrctDbtTx>
+    <DbtrAgt>
+        <FinInstnId>
+            <Othr>
+                <Id>NOTPROVIDED</Id>
+            </Othr>
+        </FinInstnId>
+    </DbtrAgt>
+    <Dbtr>
+        <Nm>NOMBRE_CLIENTE</Nm>
+    </Dbtr>
+    <DbtrAcct>
+        <Id>
+            <IBAN>IBAN_CLIENTE</IBAN>
+        </Id>
+    </DbtrAcct>
+    <RmtInf>
+        <Ustrd>CONCEPTO</Ustrd>
+    </RmtInf>
+</DrctDbtTxInf>

@@ -4,116 +4,10 @@ class Replace {
 
 
     public  $FOO = "OK it works";
-    public  $HEADER =<<<EOT
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.02">
-    <CstmrDrctDbtInitn>
-        <GrpHdr>
-            <MsgId>MSGID</MsgId>
-            <CreDtTm>2016-11-25T11:20:57</CreDtTm>
-            <NbOfTxs>NUMERO_TOTAL_ADEUDOS</NbOfTxs>
-            <CtrlSum>CANTIDAD_TOTAL</CtrlSum>
-            <InitgPty>
-                <Nm>NOMBRE_DEL_PRESENTADOR</Nm>
-                <Id>
-                    <OrgId>
-                        <Othr>
-                            <Id>IDENTIFICADOR_DEL_PRESENTADOR</Id>
-                        </Othr>
-                    </OrgId>
-                </Id>
-            </InitgPty>
-        </GrpHdr>
-        <PmtInf>
-            <PmtInfId>IDENTIFICADOR_PRESENTADOR_FECHA</PmtInfId>
-            <PmtMtd>DD</PmtMtd>
-            <BtchBookg>true</BtchBookg>
-            <PmtTpInf>
-                <SvcLvl>
-                    <Cd>SEPA</Cd>
-                </SvcLvl>
-                <LclInstrm>
-                    <Cd>CORE</Cd>
-                </LclInstrm>
-                <SeqTp>RCUR</SeqTp>
-            </PmtTpInf>
-            <ReqdColltnDt>FECHA_DE_COBRO_SIN_HORA</ReqdColltnDt>
-            <Cdtr>
-                <Nm>NOMBRE_DEL_PRESENTADOR</Nm>
-                <PstlAdr>
-                    <Ctry>ES</Ctry>
-                </PstlAdr>
-            </Cdtr>
-            <CdtrAcct>
-                <Id>
-                    <IBAN>IBAN_PRESENTADOR</IBAN>
-                </Id>
-                <Ccy>EUR</Ccy>
-            </CdtrAcct>
-            <CdtrAgt>
-                <FinInstnId>
-                    <BIC>BIC_BANCO</BIC>
-                </FinInstnId>
-            </CdtrAgt>
-            <ChrgBr>SLEV</ChrgBr>
-            <CdtrSchmeId>
-                <Id>
-                    <PrvtId>
-                        <Othr>
-                            <Id>IDENTIFICADOR_DEL_PRESENTADOR</Id>
-                            <SchmeNm>
-                                <Prtry>SEPA</Prtry>
-                            </SchmeNm>
-                        </Othr>
-                    </PrvtId>
-                </Id>
-            </CdtrSchmeId>
-
-EOT;
-
-    public $CUSTOMER=<<<EOT
-  <DrctDbtTxInf>
-                <PmtId>
-                    <InstrId>IDENTIFICADOR_CLIENTE_FECHA</InstrId>
-                    <EndToEndId>ID_MANDATO</EndToEndId>
-                </PmtId>
-                <InstdAmt Ccy="EUR">CANTIDAD</InstdAmt>
-                <DrctDbtTx>
-                    <MndtRltdInf>
-                        <MndtId>ID_MANDATO</MndtId>
-                        <DtOfSgntr>FECHA_MANDATO</DtOfSgntr>
-                        <AmdmntInd>false</AmdmntInd>
-                    </MndtRltdInf>
-                </DrctDbtTx>
-                <DbtrAgt>
-                    <FinInstnId>
-                        <Othr>
-                            <Id>NOTPROVIDED</Id>
-                        </Othr>
-                    </FinInstnId>
-                </DbtrAgt>
-                <Dbtr>
-                    <Nm>NOMBRE_CLIENTE</Nm>
-                </Dbtr>
-                <DbtrAcct>
-                    <Id>
-                        <IBAN>IBAN_CLIENTE</IBAN>
-                    </Id>
-                </DbtrAcct>
-                <RmtInf>
-                    <Ustrd>CONCEPTO</Ustrd>
-                </RmtInf>
-            </DrctDbtTxInf>
-EOT;
-
-    public  $FOOTER =<<<EOT
-        </PmtInf>
-    </CstmrDrctDbtInitn>
- </Document>
-EOT;
-
+    public  $HEADER;
+    public $CUSTOMER;
+    public  $FOOTER;
     public  $HEADER_VALUES;
-
     public $CUSTOMER_VALUES;
 
     function __construct() {
@@ -146,6 +40,9 @@ EOT;
             'CONCEPTO' => '',
             'IBAN_CLIENTE' => ''
         );
+        $this->HEADER = file_get_contents('header.xml');
+        $this->CUSTOMER = file_get_contents('customer.xml');
+        $this->FOOTER = file_get_contents('footer.xml');
     }
 
 
